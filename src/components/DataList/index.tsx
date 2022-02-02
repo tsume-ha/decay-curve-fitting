@@ -1,4 +1,5 @@
-import {XYData} from "types/xydata";
+import React from "react";
+import { XYData } from "types/xydata";
 
 type PropsType = {
   XYData: Array<XYData>
@@ -19,5 +20,5 @@ export const DataList = (props: PropsType) => {
         ))}
       </ul>
     </>
-  )
-}
+  );
+};

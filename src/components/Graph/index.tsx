@@ -1,3 +1,5 @@
+import React from "react";
+
 export const Graph = () => {
   return (
     <>
@@ -5,5 +7,5 @@ export const Graph = () => {
         グラフコンポーネント
       </div>
     </>
-  )
-}
+  );
+};
