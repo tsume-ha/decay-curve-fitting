@@ -14,9 +14,10 @@ const App = () => {
   const addXYData = (xydata: XYData) => {
     setXYData([xydata, ...XYData]);
   };
+  const params: Array<number> = [1,2,3];
   return (
     <div className="App">
-      <Graph />
+      <Graph params={params} />
       <DataInput add={addXYData} />
       <DataList XYData={XYData} />
     </div>

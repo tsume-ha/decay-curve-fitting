@@ -16,9 +16,11 @@ export const DataInput = (props: PropsType) => {
       x: xData,
       y: yData
     });
+    setXData(0);
+    setYData(0);
   };
-  const [xData, setXData] = useState<number>();
-  const [yData, setYData] = useState<number>();
+  const [xData, setXData] = useState<number|undefined>();
+  const [yData, setYData] = useState<number|undefined>();
   const handleXChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXData(Number(e.target.value));
   };
