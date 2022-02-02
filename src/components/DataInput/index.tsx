@@ -34,9 +34,9 @@ export const DataInput = (props: PropsType) => {
         データインプット
         <form onSubmit={handleSubmit}>
           <label htmlFor="x-input">x: </label>
-          <input id="x-input" type="number" value={xData} onChange={handleXChange} />
+          <input id="x-input" type="number" step="0.0001" value={xData} onChange={handleXChange} />
           <label htmlFor="y-input">y: </label>
-          <input id="y-input" type="number" value={yData} onChange={handleYChange} />
+          <input id="y-input" type="number" step="0.0001" value={yData} onChange={handleYChange} />
           <button type="submit">ADD</button>
         </form>
       </div>

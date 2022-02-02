@@ -1,13 +1,14 @@
 import Matrix from "./matrix";
 import { XYData } from "types/xydata";
+import { Params } from "types/params";
 
-export default class Solver{
+export default class ExpSolver{
   data: Array<XYData>;
   params: Matrix;
 
-  constructor() {
-    this.data = [];
-    this.params = new Matrix([[1],[2],[3]]);
+  constructor(data: Array<XYData>, params: Params) {
+    this.data = data;
+    this.params = new Matrix([[params.a],[params.b],[params.c]]);
   }
   initSolve(): Matrix {
     // y = a (1 - bx + b^2 x^2 / 2) + c

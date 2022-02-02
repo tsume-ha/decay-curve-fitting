@@ -1,7 +1,8 @@
 import React from "react";
+import { Params } from "types/params";
 
 type propsType = {
-  params: Array<number>
+  params: Params
 }
 
 export const Graph = (props: propsType) => {
@@ -10,7 +11,7 @@ export const Graph = (props: propsType) => {
     <>
       <div>
         グラフコンポーネント<br />
-        a: {params[0]}, b: {params[1]}, c: {params[2]}        
+        a: {params.a}, b: {params.b}, c: {params.c}        
       </div>
     </>
   );
