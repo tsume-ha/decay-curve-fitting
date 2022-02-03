@@ -1,4 +1,3 @@
-import React from "react";
 import { XYData } from "types/xydata";
 
 type PropsType = {

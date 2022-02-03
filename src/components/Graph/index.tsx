@@ -1,4 +1,3 @@
-import React from "react";
 import { Params } from "types/params";
 
 type propsType = {
