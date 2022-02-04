@@ -7,6 +7,7 @@ interface useExpSolverType {
   XYData: Array<XYData>;
   params: Params;
   addXYData: (xydata: XYData) => void;
+  removeXYData: (xydata: XYData) => void;
 }
 
 export const useExpSolver = (): useExpSolverType => {
@@ -120,6 +121,16 @@ export const useExpSolver = (): useExpSolverType => {
     setXYData([xydata, ...XYData]);
     fitting();
   };
+  const removeXYData = (xydata: XYData): void => {
+    const index = XYData.indexOf(xydata);
+    if (index === -1) {
+      return;
+    }
+    const currentData = [...XYData];
+    currentData.splice(index, 1);
+    setXYData(currentData);
+    fitting();
+  };
 
-  return { XYData, params, addXYData};
+  return { XYData, params, addXYData, removeXYData};
 };

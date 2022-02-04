@@ -5,12 +5,12 @@ import { DataList } from "components/DataList";
 import { useExpSolver } from "hooks/useExpSolver";
 
 const App = () => {
-  const { XYData, params, addXYData } = useExpSolver();
+  const { XYData, params, addXYData, removeXYData } = useExpSolver();
   return (
     <div className="App">
-      <Graph params={params} />
+      <Graph XYData={XYData} params={params} />
       <DataInput add={addXYData} />
-      <DataList XYData={XYData} />
+      <DataList XYData={XYData} removeXYData={removeXYData} />
     </div>
   );
 };

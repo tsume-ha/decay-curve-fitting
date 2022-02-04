@@ -1,11 +1,12 @@
 import { XYData } from "types/xydata";
 
 type PropsType = {
-  XYData: Array<XYData>
+  XYData: Array<XYData>;
+  removeXYData: (xydata: XYData) => void;
 }
 
 export const DataList = (props: PropsType) => {
-  const {XYData} = props;
+  const { XYData, removeXYData} = props;
   return (
     <>
       <div>
@@ -14,7 +15,7 @@ export const DataList = (props: PropsType) => {
       <ul>
         {XYData.map(data => (
           <li key={String(data.x)+String(data.y)}>
-            x: {data.x}, y: {data.y}
+            x: {data.x}, y: {data.y}, <button onClick={() => removeXYData(data)}>del</button>
           </li>
         ))}
       </ul>

@@ -1,7 +1,9 @@
 import { Params } from "types/params";
+import { XYData } from "types/xydata";
 
 type propsType = {
-  params: Params
+  params: Params,
+  XYData: Array<XYData>;
 }
 
 export const Graph = (props: propsType) => {
