@@ -10,9 +10,19 @@ interface useExpSolverType {
   removeXYData: (xydata: XYData) => void;
 }
 
+const initParam: Params = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
 export const useExpSolver = (): useExpSolverType => {
   const [XYData, setXYData] = useState<Array<XYData>>([
-    { x: 1, y: 16 },
+    {x:1,y:16},
+    {x:2,y:7},
+    {x:3,y:3},
+    {x:4,y:1},
+    {x:5,y:0},
   ]);
   const [params, setParams] = useState<Params>({
     a: 1,
@@ -27,6 +37,7 @@ export const useExpSolver = (): useExpSolverType => {
     if (XYData.length < 3) {
       throw new Error("init solver needs more then 3 data.");
     }
+    console.log("init solve");
     const x12: number = XYData[0].x - XYData[1].x;
     const x13: number = XYData[0].x - XYData[2].x;
     const y12: number = XYData[0].y - XYData[1].y;
@@ -48,7 +59,7 @@ export const useExpSolver = (): useExpSolverType => {
       )
     );
     const c: number = y1 - a * (1 - b * x1 + (b * x1) ** 2 / 2);
-    
+    console.log({ a, b, c });
     setParams({a, b, c});
   };
 
@@ -99,7 +110,11 @@ export const useExpSolver = (): useExpSolverType => {
     if (XYData.length < 3) {
       return;
     }
-    if (XYData.length === 3 || params === null) {
+    if (XYData.length === 3 || (
+      params.a === initParam.a ||
+      params.b === initParam.b ||
+      params.c === initParam.c
+    )) {
       initSolve();
     }
     let counter = 0;
@@ -112,6 +127,7 @@ export const useExpSolver = (): useExpSolverType => {
       ) {
         break;
       }
+      console.log(calculated);
       setParams(calculated);
       counter++;
     }
