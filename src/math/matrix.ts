@@ -1,6 +1,13 @@
 type MatrixType = Array<Array<number>>
 
-export default class Matrix {
+export class MatrixError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "MatrixError";
+  }
+}
+
+export class Matrix {
   n: number;// tate
   m: number;//  yoko
   value: MatrixType;
@@ -10,14 +17,14 @@ export default class Matrix {
     this.m = value[0].length;
     for (let i = 0; i < this.n; i++) {
       if (value[i].length !== this.m) {
-        throw new Error("col num is different");
+        throw new MatrixError("col num is different");
       }
     }
     this.value = value;
   }
   add(matrix: Matrix): Matrix {
     if (!(this.n === matrix.n && this.m === matrix.m)) {
-      throw new Error("Matrix size is different in 'add'");
+      throw new MatrixError("Matrix size is different in 'add'");
     }
     return new Matrix(this.value.map((row: Array<number>, i: number) => {
       return row.map((num: number, j: number) => {
@@ -27,13 +34,13 @@ export default class Matrix {
   }
   det2(): number {
     if (!(this.n === 2 && this.m === 2)) {
-      throw new Error("only 2x2 matrix size is allowed in det2");
+      throw new MatrixError("only 2x2 matrix size is allowed in det2");
     }
     return this.value[0][0] * this.value[1][1] - this.value[0][1] * this.value[1][0];
   }
   det3(): number {
     if (!(this.n === 3 && this.m === 3)) {
-      throw new Error("only 3x3 matrix size is allowed in det3");
+      throw new MatrixError("only 3x3 matrix size is allowed in det3");
     }
     return (
       this.value[0][0] * this.value[1][1] * this.value[2][2] +
@@ -46,7 +53,7 @@ export default class Matrix {
   }
   multiple(matrix: Matrix): Matrix {
     if (this.m !== matrix.n) {
-      throw new Error("matrix size error, size is incollect; nxk * kxm => nxm");
+      throw new MatrixError("matrix size error, size is incollect; nxk * kxm => nxm");
     }
     const result: MatrixType = [];
     for (let i = 0; i < this.n; i++) {
@@ -64,11 +71,11 @@ export default class Matrix {
   }
   inverse3(): Matrix {
     if (!(this.n === 3 && this.m === 3)) {
-      throw new Error("only 3x3 matrix size is allowed in inverse3");
+      throw new MatrixError("only 3x3 matrix size is allowed in inverse3");
     }
     const det = this.det3();
     if (det === 0) {
-      throw new Error("determinant is 0");
+      throw new MatrixError("determinant is 0");
     }
     return new Matrix([
       [

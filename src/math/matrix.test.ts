@@ -1,4 +1,4 @@
-import Matrix from "./matrix";
+import {Matrix} from "./matrix";
 type MatrixType = Array<Array<number>>
 
 test("constructs new matrix", () => {
