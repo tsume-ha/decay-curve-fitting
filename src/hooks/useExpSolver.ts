@@ -3,11 +3,14 @@ import { XYData } from "types/xydata";
 import { Params } from "types/params";
 import Matrix from "math/matrix";
 
-interface useExpSolverType {
+export type UseExpCounterType = {
   XYData: Array<XYData>;
   params: Params;
   addXYData: (xydata: XYData) => void;
   removeXYData: (xydata: XYData) => void;
+  fitting: () => void;
+  initSolve: () => void;
+  solve: (params: Params) => Params;
 }
 
 const initParam: Params = {
@@ -16,7 +19,7 @@ const initParam: Params = {
   c: 3
 };
 
-export const useExpSolver = (): useExpSolverType => {
+export const useExpSolver = (): UseExpCounterType => {
   const [XYData, setXYData] = useState<Array<XYData>>([
     {x:1,y:16},
     {x:2,y:7},
@@ -37,7 +40,6 @@ export const useExpSolver = (): useExpSolverType => {
     if (XYData.length < 3) {
       throw new Error("init solver needs more then 3 data.");
     }
-    console.log("init solve");
     const x12: number = XYData[0].x - XYData[1].x;
     const x13: number = XYData[0].x - XYData[2].x;
     const y12: number = XYData[0].y - XYData[1].y;
@@ -59,23 +61,11 @@ export const useExpSolver = (): useExpSolverType => {
       )
     );
     const c: number = y1 - a * (1 - b * x1 + (b * x1) ** 2 / 2);
-    console.log({ a, b, c });
+    // console.log({ a, b, c });
     setParams({a, b, c});
   };
 
-  const getMatrixParams = (params: Params): Matrix => {
-    const { a, b, c } = params;
-    return new Matrix([[a], [b], [c]]);
-  };
-  const getParamsFromMatrix = (matrix: Matrix): Params => {
-    return {
-      a: matrix.value[0][0],
-      b: matrix.value[1][0],
-      c: matrix.value[2][0],
-    };
-  };
-
-  const solve = (): Params => {
+  const solve = (params: Params): Params => {
     const { a, b, c } = params;
     const da = (x: number): number => Math.exp(-1 * b * x);
     const db = (x: number): number => -1 * a * x * Math.exp(-1 * b * x);
@@ -97,29 +87,29 @@ export const useExpSolver = (): useExpSolverType => {
       })
     );
 
-    const paramMatrix = getMatrixParams(params).add(
+    const paramMatrix = new Matrix([[a], [b], [c]]).add(
       jacobian.transpose().multiple(jacobian).inverse3().multiple(
         jacobian.transpose()
       ).multiple(residual)
     );
-    return getParamsFromMatrix(paramMatrix);
+    return {
+      a: paramMatrix.value[0][0],
+      b: paramMatrix.value[1][0],
+      c: paramMatrix.value[2][0],
+    };
   };
 
 
   const fitting = (tryNum = 15, accuracy = 0.00001): void => {
     if (XYData.length < 3) {
       return;
-    }
-    if (XYData.length === 3 || (
-      params.a === initParam.a ||
-      params.b === initParam.b ||
-      params.c === initParam.c
-    )) {
+    } else {params.a === initParam.a && params.b === initParam.b && params.c === initParam.c;} {
       initSolve();
     }
     let counter = 0;
     while (counter < tryNum) {
-      const calculated: Params = solve();
+      console.log(params);
+      const calculated: Params = solve(params);
       if (
         Math.abs(calculated.a - params.a) < accuracy
         && Math.abs(calculated.b - params.b) < accuracy
@@ -128,14 +118,13 @@ export const useExpSolver = (): useExpSolverType => {
         break;
       }
       console.log(calculated);
-      setParams(calculated);
+      setParams({...calculated});
       counter++;
     }
   };
 
   const addXYData = (xydata: XYData): void => {
     setXYData([xydata, ...XYData]);
-    fitting();
   };
   const removeXYData = (xydata: XYData): void => {
     const index = XYData.indexOf(xydata);
@@ -145,8 +134,7 @@ export const useExpSolver = (): useExpSolverType => {
     const currentData = [...XYData];
     currentData.splice(index, 1);
     setXYData(currentData);
-    fitting();
   };
 
-  return { XYData, params, addXYData, removeXYData};
+  return { XYData, params, addXYData, removeXYData, fitting, initSolve, solve};
 };
