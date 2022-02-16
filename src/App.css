@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-#App > div {
+#App > * {
   margin: 0 auto;
   max-width: 600px;
 }
