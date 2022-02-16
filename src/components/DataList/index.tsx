@@ -10,7 +10,7 @@ export const DataList = (props: PropsType) => {
   const { XYData, removeXYData} = props;
   return (
     <div id="data-list">
-      データ一覧
+      Data list
       <ul>
         {XYData.map(data => (
           <li key={String(data.x)+String(data.y)}>

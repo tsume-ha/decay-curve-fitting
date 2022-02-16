@@ -13,6 +13,8 @@ import { Chart } from "react-chartjs-2";
 import { Params } from "types/params";
 import { XYData } from "types/xydata";
 
+import "./index.css";
+
 
 ChartJS.register(
   LinearScale,
@@ -67,11 +69,15 @@ export const Graph = (props: propsType) => {
   };
   return (
     <div id="graph-display">
-        グラフコンポーネント<br />
-        a: {a}, b: {b}, c: {c}
       <div>
         <Chart type='scatter' data={data} />
       </div>
+      <p>
+        current equation: a exp(-bx) + c<br />
+        a: {a}<br />
+        b: {b}<br />
+        c: {c}<br />
+      </p>
     </div>
   );
 };

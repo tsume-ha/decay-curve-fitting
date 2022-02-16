@@ -8,6 +8,7 @@ const App = () => {
   const { XYData, params, addXYData, removeXYData } = useExpSolver();
   return (
     <div id="App">
+      <h3>Fitting curve</h3>
       <Graph XYData={XYData} params={params} />
       <DataInput add={addXYData} />
       <DataList XYData={XYData} removeXYData={removeXYData} />

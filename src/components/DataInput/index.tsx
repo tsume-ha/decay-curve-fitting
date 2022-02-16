@@ -30,7 +30,7 @@ export const DataInput = (props: PropsType) => {
 
   return (
     <div id="data-input">
-      データインプット
+      Data input
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="x-input">x: </label>

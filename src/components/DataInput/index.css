@@ -1,7 +1,7 @@
 #data-input {
   width: 100%;
   box-sizing: border-box;
-  padding: 2rem .5rem;
+  padding: 2rem 0;
 }
 
 #data-input > form {
