@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {XYData} from "types/xydata";
+import { XYData } from "types/xydata";
+import "./index.css";
 
 type PropsType = {
   add: (xy: XYData) => void
@@ -28,17 +29,21 @@ export const DataInput = (props: PropsType) => {
   };
 
   return (
-    <>
-      <div>
-        データインプット
-        <form onSubmit={handleSubmit}>
+    <div id="data-input">
+      データインプット
+      <form onSubmit={handleSubmit}>
+        <div>
           <label htmlFor="x-input">x: </label>
           <input id="x-input" type="number" step="0.0001" value={xData} onChange={handleXChange} />
+        </div>
+        <div>
           <label htmlFor="y-input">y: </label>
           <input id="y-input" type="number" step="0.0001" value={yData} onChange={handleYChange} />
+        </div>
+        <div>
           <button type="submit">ADD</button>
-        </form>
-      </div>
-    </>
+        </div>
+      </form>
+    </div>
   );
 };

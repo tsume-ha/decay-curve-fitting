@@ -1,4 +1,5 @@
 import { XYData } from "types/xydata";
+import "./index.css";
 
 type PropsType = {
   XYData: Array<XYData>;
@@ -8,17 +9,17 @@ type PropsType = {
 export const DataList = (props: PropsType) => {
   const { XYData, removeXYData} = props;
   return (
-    <>
-      <div>
-        データ一覧
-      </div>
+    <div id="data-list">
+      データ一覧
       <ul>
         {XYData.map(data => (
           <li key={String(data.x)+String(data.y)}>
-            x: {data.x}, y: {data.y}, <button onClick={() => removeXYData(data)}>del</button>
+            <span>x: {data.x}</span>
+            <span>y: {data.y}</span>
+            <button onClick={() => removeXYData(data)}>del</button>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };

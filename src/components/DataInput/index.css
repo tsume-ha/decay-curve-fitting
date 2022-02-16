@@ -1,0 +1,37 @@
+#data-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem .5rem;
+}
+
+#data-input > form {
+  display: block;
+  box-sizing: border-box;
+}
+
+#data-input > form > div{
+  display: inline-block;
+}
+#data-input > form > div:not(:last-child){
+  width: calc(50% - 3rem);
+  min-width: 6rem;
+  margin-right: 1rem;
+}
+#data-input > form > div:not(:last-child) label{
+  display: inline-block;
+  width: 1.5rem;
+}
+
+#data-input > form > div:last-child{
+  width: 3rem;
+}
+
+#data-input > form > div > input{
+  box-sizing: border-box;
+  padding: .4rem;
+  width: calc(100% - 1.5rem);
+}
+
+#data-input > form > div > button {
+  padding: .4rem 1rem;
+}

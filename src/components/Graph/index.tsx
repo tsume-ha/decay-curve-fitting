@@ -66,14 +66,12 @@ export const Graph = (props: propsType) => {
     ]
   };
   return (
-    <>
-      <div>
+    <div id="graph-display">
         グラフコンポーネント<br />
         a: {a}, b: {b}, c: {c}
-        <div>
-          <Chart type='scatter' data={data} />
-        </div>
+      <div>
+        <Chart type='scatter' data={data} />
       </div>
-    </>
+    </div>
   );
 };

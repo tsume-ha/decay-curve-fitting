@@ -1,0 +1,9 @@
+#App {
+  display: flex;
+  flex-direction: column;
+}
+
+#App > div {
+  margin: 0 auto;
+  max-width: 600px;
+}
