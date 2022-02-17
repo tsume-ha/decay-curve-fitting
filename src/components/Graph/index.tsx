@@ -8,7 +8,7 @@ import {
   Legend,
   Tooltip,
 } from "chart.js";
-import { Chart } from "react-chartjs-2";
+import { Scatter } from "react-chartjs-2";
 
 import { Params } from "types/params";
 import { XYData } from "types/xydata";
@@ -51,7 +51,7 @@ export const Graph = (props: propsType) => {
         hoverRadius: 7,
       },
       {
-        type: "line" as const,
+        type: "scatter" as const,
         label: "fitting curve",
         showLine: true,
         data: Array.from({ length: 100 }, (_: undefined, i: number) => {
@@ -70,7 +70,7 @@ export const Graph = (props: propsType) => {
   return (
     <div id="graph-display">
       <div>
-        <Chart type='scatter' data={data} />
+        <Scatter data={data} />
       </div>
       <p>
         current equation: a exp(-bx) + c<br />
