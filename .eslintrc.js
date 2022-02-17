@@ -63,7 +63,7 @@ module.exports = {
     "prefer-template": "error",
     "rest-spread-spacing": ["error", "never"],
     "template-curly-spacing": ["error", "never"],
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
   }
 };

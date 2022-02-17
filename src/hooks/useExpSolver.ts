@@ -30,7 +30,7 @@ export const useExpSolver = (): UseExpCounterType => {
   });
   const [trialNum, setTrialNum] = useState<number>(0);
   const [initFlag, setInitFrag] = useState<boolean>(false);
-  const [scaleFactor, setScaleFactor] = useState<number>(0.5);
+  const [scaleFactor, _setScaleFactor] = useState<number>(0.5);
 
   const initSolve = (): void => {
     // y = a (1 - bx + b^2 x^2 / 2) + c
