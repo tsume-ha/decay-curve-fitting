@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/decay-curve-fitting/static/css/main.6d509383.css",
-    "main.js": "/decay-curve-fitting/static/js/main.18ff1b9c.js",
+    "main.js": "/decay-curve-fitting/static/js/main.554aff9e.js",
     "static/js/787.6ec5ec89.chunk.js": "/decay-curve-fitting/static/js/787.6ec5ec89.chunk.js",
     "index.html": "/decay-curve-fitting/index.html",
     "main.6d509383.css.map": "/decay-curve-fitting/static/css/main.6d509383.css.map",
-    "main.18ff1b9c.js.map": "/decay-curve-fitting/static/js/main.18ff1b9c.js.map",
+    "main.554aff9e.js.map": "/decay-curve-fitting/static/js/main.554aff9e.js.map",
     "787.6ec5ec89.chunk.js.map": "/decay-curve-fitting/static/js/787.6ec5ec89.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6d509383.css",
-    "static/js/main.18ff1b9c.js"
+    "static/js/main.554aff9e.js"
   ]
 }
