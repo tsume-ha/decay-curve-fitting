@@ -54,7 +54,7 @@ export const Graph = (props: propsType) => {
         type: "line" as const,
         label: "fitting curve",
         showLine: true,
-        data: Array.from({ length: 100 }, (_: any, i: number) => {
+        data: Array.from({ length: 100 }, (_: undefined, i: number) => {
           const x = begin + (end - begin) * 0.01 * i;
           const y = a * Math.exp(-1 * b * x) + c;
           return { x, y };

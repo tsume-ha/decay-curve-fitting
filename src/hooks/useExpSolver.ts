@@ -30,6 +30,7 @@ export const useExpSolver = (): UseExpCounterType => {
   });
   const [trialNum, setTrialNum] = useState<number>(0);
   const [initFlag, setInitFrag] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [scaleFactor, _setScaleFactor] = useState<number>(0.5);
 
   const initSolve = (): void => {
